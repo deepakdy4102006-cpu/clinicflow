@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Appointment — ClinicFlow</title>
+<link rel="stylesheet" href="styles.css">
+
+
+</head>
+<body>
+
+<nav class="topbar">
+  <a class="topbar-logo" href="index.html"><span class="logo-pulse"></span> ClinicFlow</a>
+  <div class="topbar-links">
+    <a class="tl" href="index.html">Live Queue</a>
+    <a class="tl active" href="book.html">Book Slot</a>
+    <a class="tl" href="doctor.html">Doctor Panel</a>
+    <a class="tl cta" href="book.html">+ Book</a>
+  </div>
+</nav>
+<div id="toast"></div>
+
+<div class="page">
+  <div class="container">
+    <div class="book-layout">
+
+      <!-- LEFT: Booking form -->
+      <div>
+        <div class="book-card">
+          <div class="book-title">Book Appointment</div>
+          <div class="book-sub">City Care MSME Hospital — takes under 60 seconds</div>
+
+          <div id="form-wrap">
+            <!-- Returning patient banner -->
+            <div class="returning-banner" id="returning-banner">
+              <div class="returning-av">👋</div>
+              <div>
+                <div class="returning-name" id="ret-name">Welcome back!</div>
+                <div class="returning-sub" id="ret-sub">Visit #1 · Name auto-filled</div>
+              </div>
+            </div>
+
+            <!-- Step 1: Phone -->
+            <div class="form-group">
+              <label class="form-label">Mobile Number</label>
+              <div class="phone-row">
+                <input type="tel" class="form-input" id="inp-phone" placeholder="10-digit number" maxlength="10" inputmode="numeric">
+                <button class="btn btn-ink" id="btn-check" onclick="checkPatient()">Check</button>
+              </div>
+              <div class="form-error" id="err-phone">Enter a valid 10-digit number</div>
+            </div>
+
+            <!-- Step 2: Rest of form (shown after phone check) -->
+            <div id="form-rest" style="display:none;">
+              <div class="form-group">
+                <label class="form-label">Full Name</label>
+                <input type="text" class="form-input" id="inp-name" placeholder="e.g. Rahul Sharma">
+                <div class="form-error" id="err-name">Enter your full name</div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Department</label>
+                <select class="form-input" id="inp-dept" onchange="onDeptChange()">
+                  <option value="">Select department</option>
+                  <option>General OPD</option>
+                  <option>Cardiology</option>
+                  <option>Orthopaedics</option>
+                  <option>Paediatrics</option>
+                  <option>Gynaecology</option>
+                  <option>ENT</option>
+                </select>
+                <div class="form-error" id="err-dept">Select a department</div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Doctor</label>
+                <select class="form-input" id="inp-doctor" disabled>
+                  <option>Select department first</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Date</label>
+                <select class="form-input" id="inp-date">
+                  <option value="today">Today</option>
+                  <option value="tomorrow">Tomorrow</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Time Slot</label>
+                <div class="slot-grid" id="slot-grid"></div>
+                <div class="form-error" id="err-slot">Please select a time slot</div>
+              </div>
+
+              <div class="form-group" style="margin-top:24px;">
+                <button class="btn btn-ink btn-full btn-lg" id="btn-submit" onclick="submitBooking()">
+                  Confirm Booking →
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Confirmation screen -->
+          <div class="confirm-wrap" id="confirm-wrap">
+            <div class="confirm-icon">✅</div>
+            <div style="color:var(--muted);font-size:13px;margin-bottom:6px;">Your Token Number</div>
+            <div class="confirm-token-num" id="conf-token">—</div>
+            <div class="confirm-token-label">Show this at reception</div>
+            <div class="confirm-table">
+              <div class="confirm-row"><span class="confirm-row-label">Name</span><span id="conf-name">—</span></div>
+              <div class="confirm-row"><span class="confirm-row-label">Doctor</span><span id="conf-doctor">—</span></div>
+              <div class="confirm-row"><span class="confirm-row-label">Department</span><span id="conf-dept">—</span></div>
+              <div class="confirm-row"><span class="confirm-row-label">Time Slot</span><span id="conf-time">—</span></div>
+              <div class="confirm-row"><span class="confirm-row-label">Mobile</span><span id="conf-phone">—</span></div>
+            </div>
+            <div class="reminder-note">💬 You will receive a WhatsApp/SMS reminder 15 minutes before your slot. No need to arrive early.</div>
+            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+              <a class="btn btn-outline" href="index.html">Watch Live Queue</a>
+              <button class="btn btn-ink" onclick="resetForm()">Book Another</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Queue peek -->
+      <div>
+        <div class="queue-peek">
+          <div class="qp-title">🟢 Live Queue Status</div>
+          <div id="qp-list"><!-- injected --></div>
+        </div>
+        <div class="card" style="margin-top:16px;">
+          <div class="title" style="margin-bottom:12px;">ℹ️ What happens next</div>
+          <div style="font-size:13.5px;color:var(--muted);line-height:1.75;">
+            1. You get a token number instantly<br>
+            2. Watch the live queue from home<br>
+            3. Get a WhatsApp reminder 15 min before your slot<br>
+            4. Arrive only when it's nearly your turn<br>
+            5. Show your token number at reception
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script type="module" src="book.js"></script>
+</body>
+</html>

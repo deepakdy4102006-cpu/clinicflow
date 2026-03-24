@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Queue — ClinicFlow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;600;700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="index.css">
+<script type="module" src="index.js"></script>
+
+</head>
+<body>
+<nav class="topbar">
+  <a class="topbar-logo" href="landing.html"><span class="logo-pulse"></span> ClinicFlow</a>
+  <div class="topbar-links">
+    <a class="tl active" href="index.html">Live Queue</a>
+    <a class="tl" href="book.html">Book Slot</a>
+    <a class="tl" href="doctor.html">Doctor Panel</a>
+    <a class="tl cta" href="book.html">+ Book</a>
+  </div>
+</nav>
+<div id="toast"></div>
+<div class="page">
+  <div class="queue-hero">
+    <div class="container">
+      <div class="hospital-header">
+        <div>
+          <div class="hospital-name" id="hosp-name">City Care MSME Hospital</div>
+          <div class="hospital-meta">
+            <span>📍 <span id="hosp-addr">Near Bus Stand, Main Road</span></span>
+            <span>📞 <span id="hosp-phone">98765-43210</span></span>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span class="badge badge-green"><span class="badge-dot pulse"></span> OPD Open</span>
+          <a class="btn btn-accent btn-sm" href="book.html">Book Slot</a>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="doc-tabs" id="doc-tabs"></div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="token-area">
+      <div id="my-banner-wrap" style="margin-bottom:16px;"></div>
+      <div class="token-grid">
+        <div class="token-main">
+          <div class="token-main-label">Now Serving</div>
+          <div class="token-big" id="current-token">18</div>
+          <div class="token-dept" id="current-dept">General OPD · Dr. R. Sharma</div>
+          <div class="live-row"><span class="live-dot"></span><span class="live-text" id="updated-text">Live</span></div>
+        </div>
+        <div class="token-side">
+          <div class="token-stat"><div class="token-stat-val accent" id="wait-val">128</div><div class="token-stat-label">Estimated wait (min)</div></div>
+          <div class="token-stat"><div class="token-stat-val" id="ahead-val">16</div><div class="token-stat-label">Patients ahead</div></div>
+          <div class="token-stat"><div class="token-stat-val blue" id="total-val">34</div><div class="token-stat-label">Total today</div></div>
+        </div>
+      </div>
+      <div class="queue-viz">
+        <div class="queue-viz-title">Queue overview</div>
+        <div class="queue-bar" id="queue-bar"></div>
+        <div class="queue-legend">
+          <div class="ql"><div class="ql-dot" style="background:var(--accent)"></div>Current</div>
+          <div class="ql"><div class="ql-dot" style="background:var(--surface);border:1.5px solid var(--border)"></div>Done</div>
+          <div class="ql"><div class="ql-dot" style="background:var(--card);border:1.5px solid var(--border)"></div>Waiting</div>
+          <div class="ql"><div class="ql-dot" style="background:var(--blue)"></div>Your token</div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-bottom:24px;">
+      <div class="section-head">Departments</div>
+      <div class="dept-grid" id="dept-grid"></div>
+    </div>
+    <div class="divider"></div>
+    <div style="padding:24px 0 40px;">
+      <div class="section-head">Hospital Information</div>
+      <div class="info-grid">
+        <div class="card">
+          <div style="font-family:var(--font-h);font-size:16px;font-weight:700;margin-bottom:14px;">🕐 OPD Timings</div>
+          <div class="info-row"><span class="info-label">Mon–Sat Morning</span><span class="info-val">8:00 AM – 2:00 PM</span></div>
+          <div class="info-row"><span class="info-label">Mon–Sat Evening</span><span class="info-val">5:00 PM – 8:00 PM</span></div>
+          <div class="info-row"><span class="info-label">Sunday</span><span class="info-val">9:00 AM – 12:00 PM</span></div>
+          <div class="info-row"><span class="info-label">Emergency</span><span class="info-val" style="color:var(--accent)">24 × 7</span></div>
+        </div>
+        <div class="card">
+          <div style="font-family:var(--font-h);font-size:16px;font-weight:700;margin-bottom:14px;">💊 Consultation Fees</div>
+          <div class="info-row"><span class="info-label">General OPD</span><span class="info-val">₹200</span></div>
+          <div class="info-row"><span class="info-label">Specialist</span><span class="info-val">₹350</span></div>
+          <div class="info-row"><span class="info-label">Follow-up</span><span class="info-val">₹100</span></div>
+          <div class="info-row"><span class="info-label">Emergency</span><span class="info-val">₹500</span></div>
+        </div>
+        <div class="card">
+          <div style="font-family:var(--font-h);font-size:16px;font-weight:700;margin-bottom:14px;">👨‍⚕️ Our Doctors</div>
+          <div class="doctor-row"><div class="doctor-av">👨‍⚕️</div><div><div class="doctor-name">Dr. R. Sharma</div><div class="doctor-spec">MBBS, MD · General OPD</div></div></div>
+          <div class="doctor-row"><div class="doctor-av">👩‍⚕️</div><div><div class="doctor-name">Dr. P. Mehta</div><div class="doctor-spec">DM · Cardiology</div></div></div>
+          <div class="doctor-row"><div class="doctor-av">👨‍⚕️</div><div><div class="doctor-name">Dr. S. Verma</div><div class="doctor-spec">MS · Orthopaedics</div></div></div>
+          <div class="doctor-row"><div class="doctor-av">👩‍⚕️</div><div><div class="doctor-name">Dr. A. Gupta</div><div class="doctor-spec">MD · Paediatrics</div></div></div>
+        </div>
+        <div class="card">
+          <div style="font-family:var(--font-h);font-size:16px;font-weight:700;margin-bottom:14px;">📞 Contact</div>
+          <div class="info-row"><span class="info-label">OPD Helpline</span><span class="info-val">98765-43210</span></div>
+          <div class="info-row"><span class="info-label">Emergency</span><span class="info-val" style="color:var(--red)">98765-00000</span></div>
+          <div class="info-row"><span class="info-label">Address</span><span class="info-val">Near Bus Stand, Main Road</span></div>
+          <div class="info-row"><span class="info-label">Ambulance</span><span class="info-val">108</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

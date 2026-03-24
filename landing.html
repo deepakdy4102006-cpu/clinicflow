@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClinicFlow — Smart OPD Management for MSME Hospitals</title>
+<link rel="stylesheet" href="landing.css">
+<script type="module" src="landing.js"></script>
+
+
+</head>
+<body>
+
+<nav class="topbar">
+  <a class="topbar-logo" href="landing.html"><span class="logo-pulse"></span> ClinicFlow</a>
+  <div class="topbar-links">
+    <a class="tl" href="index.html">Live Queue</a>
+    <a class="tl" href="book.html">Book Slot</a>
+    <a class="tl" href="doctor.html">Doctor Panel</a>
+    <a class="tl cta" href="book.html">+ Book Appointment</a>
+  </div>
+</nav>
+<div id="toast"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-tag fade-up"><span class="hero-tag-dot"></span> Built for MSME hospitals across India</div>
+    <h1 class="hero-h1 fade-up-1">Your patients know<br>their turn <em>before</em> they leave home.</h1>
+    <p class="hero-sub fade-up-2">Live OPD token display. WhatsApp reminders. Online appointment booking. Zero app download. Works on any phone.</p>
+    <div class="hero-cta fade-up-3">
+      <a class="btn btn-ink btn-lg" href="index.html">See Live Queue →</a>
+      <a class="btn btn-outline btn-lg" href="book.html">Book Appointment</a>
+    </div>
+    <div class="hero-stats fade-up-3">
+      <div class="hs"><div class="hs-num">2.4h</div><div class="hs-label">avg OPD wait</div></div>
+      <div class="hs"><div class="hs-num">70%</div><div class="hs-label">reducible</div></div>
+      <div class="hs"><div class="hs-num">₹0</div><div class="hs-label">cost for patients</div></div>
+      <div class="hs"><div class="hs-num">5min</div><div class="hs-label">hospital setup</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LIVE DEMO STRIP -->
+<div class="live-strip">
+  <div class="live-inner">
+    <div class="live-col">
+      <div class="live-label">Now serving — General OPD</div>
+      <div class="live-big" id="hero-token">18</div>
+      <div class="live-sub">Dr. R. Sharma · City Care Hospital</div>
+    </div>
+    <div class="live-divider"></div>
+    <div class="live-col">
+      <div class="live-label">Estimated wait for Token 31</div>
+      <div class="live-big" style="color:var(--blue);">~1h 4min</div>
+      <div class="live-sub">13 patients ahead · ~5 min each</div>
+    </div>
+  </div>
+</div>
+
+<!-- PAIN POINTS -->
+<section class="pain-section">
+  <div class="pain-inner">
+    <div class="label">The real problem</div>
+    <h2 class="headline">Why this needed to be built</h2>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-num">2.4h</div>
+        <div class="pain-text">Average patient wait in Indian MSME hospital OPDs. Most of that time is spent not knowing when their turn will come.</div>
+        <div class="pain-src">OPD Bottleneck Study 2024</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-num">40%</div>
+        <div class="pain-text">Of receptionist time spent managing the physical queue — contributing nothing to patient care.</div>
+        <div class="pain-src">Hospital Operations Research 2024</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-num">3–5</div>
+        <div class="pain-text">Patients walk out of small hospital OPDs every day because wait times are unpredictable. Each walkout is lost revenue.</div>
+        <div class="pain-src">MSME Hospital Field Research</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-num">8min</div>
+        <div class="pain-text">Wasted per consultation when the doctor has to ask for reports the patient forgot to bring. Pre-uploaded records eliminate this.</div>
+        <div class="pain-src">Clinical Efficiency Data 2023</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features-section">
+  <div class="features-inner">
+    <div class="label">What ClinicFlow does</div>
+    <h2 class="headline">Everything a hospital needs.<br>Nothing it doesn't.</h2>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="feat-icon">🟢</div>
+        <div class="feat-title">Live Token Display</div>
+        <div class="feat-desc">Patients see the current token from home — no app download. Updates the moment the doctor taps Next Patient.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📅</div>
+        <div class="feat-title">Online Appointment Booking</div>
+        <div class="feat-desc">Choose department, doctor, date, and time slot. Instant token number assigned. No phone call to reception needed.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">💬</div>
+        <div class="feat-title">WhatsApp Reminders</div>
+        <div class="feat-desc">Automatic reminder sent 15 minutes before the patient's slot. They leave home at the right time — not 2 hours early.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📊</div>
+        <div class="feat-title">Analytics Dashboard</div>
+        <div class="feat-desc">Daily patient count, peak hours, walkout rate, average wait time. Data the hospital has never had before.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🔄</div>
+        <div class="feat-title">Patient History</div>
+        <div class="feat-desc">Returning patients auto-recognised by phone number. Name pre-filled. Visit history available to the doctor.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">👨‍⚕️</div>
+        <div class="feat-title">Multi-Doctor Support</div>
+        <div class="feat-desc">Each doctor gets their own queue, panel, and PIN. Manage the entire hospital from one dashboard.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="steps-section">
+  <div class="steps-inner">
+    <div class="label" style="margin-bottom:10px;">How it works</div>
+    <h2 class="headline" style="margin-bottom:32px;">Three steps. That's it.</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num-col"><div class="step-circle">1</div><div class="step-line"></div></div>
+        <div><div class="step-title">Patient books from home</div><div class="step-desc">Visits the hospital's ClinicFlow link, picks department and time slot, gets a token number instantly. Takes 60 seconds.</div></div>
+      </div>
+      <div class="step">
+        <div class="step-num-col"><div class="step-circle">2</div><div class="step-line"></div></div>
+        <div><div class="step-title">Watches the queue from home</div><div class="step-desc">Same link shows live current token in real time. Patient sees exactly how many people are ahead and estimated wait.</div></div>
+      </div>
+      <div class="step">
+        <div class="step-num-col"><div class="step-circle">3</div></div>
+        <div><div class="step-title">Gets a reminder, arrives on time</div><div class="step-desc">Automatic WhatsApp message 15 minutes before slot. Patient arrives when it's nearly their turn. No long waits.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section">
+  <div class="pricing-inner">
+    <div class="label">Simple pricing</div>
+    <h2 class="headline">Start free. Upgrade when ready.</h2>
+    <div class="price-grid">
+      <div class="price-card">
+        <div class="price-tier">Free Trial</div>
+        <div><span class="price-amt">₹0</span> <span class="price-period">/ month</span></div>
+        <div class="price-desc">Everything you need to get started. No credit card.</div>
+        <ul class="price-features">
+          <li>Live token display</li>
+          <li>Patient appointment booking</li>
+          <li>Doctor panel + PIN login</li>
+          <li>Hospital info page</li>
+          <li class="locked">WhatsApp reminders</li>
+          <li class="locked">Analytics dashboard</li>
+          <li class="locked">Patient history</li>
+          <li class="locked">Multi-doctor management</li>
+        </ul>
+      </div>
+      <div class="price-card featured">
+        <div class="price-tier" style="color:var(--accent-d);">Pro Plan</div>
+        <div><span class="price-amt">₹999</span> <span class="price-period">/ month</span></div>
+        <div class="price-desc">Everything in Free, plus features that pay for themselves.</div>
+        <ul class="price-features">
+          <li>Live token display</li>
+          <li>Patient appointment booking</li>
+          <li>Doctor panel + PIN login</li>
+          <li>Hospital info page</li>
+          <li>WhatsApp reminders ✨</li>
+          <li>Analytics dashboard ✨</li>
+          <li>Patient history ✨</li>
+          <li>Multi-doctor management ✨</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-bottom">
+  <h2>See it live right now.</h2>
+  <p>No sign-up. No download. Open the live demo on your phone.</p>
+  <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+    <a class="btn btn-accent btn-lg" href="index.html">Open Live Queue →</a>
+    <a class="btn btn-outline btn-lg" href="doctor.html" style="border-color:rgba(255,255,255,0.2);color:#fff;">Doctor Panel Demo</a>
+  </div>
+</section>
+
+<footer style="background:var(--ink);padding:24px 20px;text-align:center;">
+  <div style="font-size:12.5px;color:rgba(255,255,255,0.3);">© 2026 ClinicFlow · Built for MSME hospitals · Made in India 🇮🇳</div>
+</footer>
+
+
+</body>
+</html>

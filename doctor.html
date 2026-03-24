@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doctor Panel — ClinicFlow</title>
+<link rel="stylesheet" href="doctor.css">
+<script type="module" src="doctor.js"></script>
+
+
+</head>
+<body>
+
+<nav class="topbar">
+  <a class="topbar-logo" href="index.html"><span class="logo-pulse"></span> ClinicFlow</a>
+  <div class="topbar-links">
+    <a class="tl" href="index.html">Live Queue</a>
+    <a class="tl" href="book.html">Book Slot</a>
+    <a class="tl active" href="doctor.html">Doctor Panel</a>
+    <a class="tl cta" href="book.html">+ Book</a>
+  </div>
+</nav>
+<div id="toast"></div>
+
+<!-- PIN SCREEN -->
+<div class="page" id="pin-screen">
+  <div class="pin-screen fade-up">
+    <div class="pin-icon">🔐</div>
+    <div class="pin-title">Doctor Panel</div>
+    <div class="pin-sub">Enter your 4-digit PIN to access today's dashboard</div>
+    <input type="password" class="pin-input" id="pin-input" maxlength="4" inputmode="numeric" placeholder="••••" autocomplete="off" oninput="onPinInput(this.value)">
+    <div class="pin-error" id="pin-error"></div>
+    <div class="pin-hint">Demo: any doctor PIN is shown below each department</div>
+    <div style="margin-top:20px;display:flex;flex-direction:column;gap:6px;" id="pin-hints"></div>
+  </div>
+</div>
+
+<!-- DOCTOR SELECTOR BAR (shown after unlock) -->
+<div id="doc-bar" style="display:none;padding-top:58px;">
+  <div class="doc-select-bar">
+    <div class="container">
+      <div class="doc-select-inner" id="doc-sel-inner"></div>
+    </div>
+  </div>
+</div>
+
+<!-- DASHBOARD (shown after unlock) -->
+<div id="dashboard" style="display:none;">
+  <div class="container">
+    <div class="dashboard">
+
+      <div class="panel-header">
+        <div>
+          <div class="panel-title" id="dash-title">Dr. Sharma — General OPD</div>
+          <div class="panel-sub" id="dash-date">Today</div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+          <span class="badge badge-green"><span class="badge-dot pulse"></span> OPD Active</span>
+          <button class="btn btn-outline btn-sm" onclick="lockPanel()">🔒 Lock</button>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-row">
+        <div class="stat-card highlight">
+          <div class="stat-val accent" id="s-current">—</div>
+          <div class="stat-label">Current Token</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val" id="s-waiting">—</div>
+          <div class="stat-label">Waiting</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val" id="s-done">—</div>
+          <div class="stat-label">Seen Today</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val" id="s-total">—</div>
+          <div class="stat-label">Total Booked</div>
+        </div>
+      </div>
+
+      <!-- Next Patient Button -->
+      <div class="next-btn-row">
+        <button class="next-btn" id="next-btn" onclick="nextPatient()">
+          <span class="nb-label">Next Patient</span>
+          <span class="nb-num" id="next-num">→</span>
+          <span class="nb-label">Tap to advance</span>
+        </button>
+      </div>
+
+      <!-- Tabs -->
+      <div class="panel-tabs">
+        <button class="panel-tab active" onclick="switchTab('appointments', this)">Appointments</button>
+        <button class="panel-tab" onclick="switchTab('analytics', this)">Analytics</button>
+        <button class="panel-tab" onclick="switchTab('patients', this)">Patient History</button>
+      </div>
+
+      <!-- APPOINTMENTS TAB -->
+      <div id="tab-appointments">
+        <div style="display:flex;justify-content:flex-end;gap:8px;margin-bottom:12px;">
+          <button class="btn btn-outline btn-sm" onclick="resetDay()">↺ Reset to Token 1</button>
+        </div>
+        <div class="apts-table">
+          <div class="apts-head">
+            <span>Token</span><span>Patient</span><span>Dept / Time</span><span>Time</span><span>Status</span><span>Action</span>
+          </div>
+          <div id="apts-list"></div>
+        </div>
+      </div>
+
+      <!-- ANALYTICS TAB -->
+      <div id="tab-analytics" style="display:none;">
+        <div id="analytics-content"></div>
+      </div>
+
+      <!-- PATIENT HISTORY TAB -->
+      <div id="tab-patients" style="display:none;">
+        <div class="card" style="max-width:500px;">
+          <div class="title" style="margin-bottom:14px;">Search Patient History</div>
+          <div class="phone-row" style="display:flex;gap:8px;">
+            <input type="tel" class="form-input" id="hist-phone" placeholder="Enter 10-digit mobile" maxlength="10" inputmode="numeric">
+            <button class="btn btn-ink" onclick="searchHistory()">Search</button>
+          </div>
+          <div id="hist-result" style="margin-top:16px;"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+</body>
+</html>
